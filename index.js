@@ -82,6 +82,9 @@ app.get('/',(req, res)=>{
     res.send('Genious car service Server is Running');
 
 });
+app.get('/hero',(req,res)=>{
+  res.send('Hero meet to Heroku')
+});
 
 app.listen(port, ()=>{
     console.log('listening to port', port)
