@@ -30,6 +30,7 @@ async function run(){
   try{
     await client.connect();
     const serviceCollection =client.db('geniosCar').collection('servicecar');
+    const orderCollection = client.db('geniosCar').collection('order');
     
     app.get('/service', async(req, res)=>{
 
@@ -59,6 +60,12 @@ async function run(){
       const id = req.params.id;
       const query = {_id:ObjectId(id)};
       const result = await serviceCollection.deleteOne(query);
+      res.send(result);
+    })
+    //order collection api
+    app.post('/order', async(req,res)=>{
+      const order = req.body;
+      const result= await orderCollection.insertOne(order);
       res.send(result);
     })
 
